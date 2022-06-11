@@ -33,10 +33,10 @@
 <body>
     <form action="index.php" method="post">
         <label for="num1">數字1:
-            <input type="number" name="num1" min="9" max="31" id="num1">
+            <input type="number" name="num1" min="1" max="15" id="num1">
         </label>
         <label for="num2">數字2:
-            <input type="number" name="num2" min="9" max="31" id="num2">
+            <input type="number" name="num2" min="1" max="15" id="num2">
         </label>
         <button type="submit">輸出乘法表</button>
     </form>

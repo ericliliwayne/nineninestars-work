@@ -6,6 +6,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>乘法表畫星星</title>
     <style>
+        body{
+            font-family: 'Courier New', Courier, monospace;
+        }
         table{
             margin: 5px auto;
             border: 2px solid black;
@@ -62,6 +65,97 @@
                 echo "</tr>";
             }
             echo "</table>";
+        }
+    ?>
+    <form action="index.php" method="post">
+        <label for="line">行數:
+            <input type="number" name="line" min="3" max="100" id="line">
+        </label>
+        <label for="shape">選擇形狀:
+            <select name="shape" id="shape">
+                <option value="直角三角形">直角三角形</option>
+                <option value="倒直角三角形">倒直角三角形</option>
+                <option value="正三角形">正三角形</option>
+                <option value="倒正三角形">倒正三角形</option>
+                <option value="菱形">菱形</option>
+                <option value="矩形">矩形</option>
+            </select>
+        </label>
+        <button type="submit">輸出圖形</button>
+    </form>
+    <?php
+        $line = isset($_POST['line'])?$_POST['line']:"";
+        $shape = isset($_POST['shape'])?$_POST['shape']:"";
+        printstars($line,$shape);
+        function printstars($line,$shape){
+            switch ($shape) {
+                case '直角三角形':
+                    for($i=0;$i<$line;$i++){
+                        for($j=0;$j<=$i;$j++){
+                            echo "*";
+                        }
+                        echo "<br>";
+                    }
+                    break;
+                case '倒直角三角形':
+                    for($i=0;$i<$line;$i++){
+                        for($j=$line;$j>$i;$j--){
+                            echo "*";
+                        }
+                        echo "<br>";
+                    }
+                    break;
+                case '正三角形':
+                    for($i=0;$i<$line;$i++){
+                        for($j=($line-1);$j>$i;$j--){
+                            echo "&nbsp";
+                        }
+                        for($k=1;$k<=(2*$i)+1;$k++){
+                            echo "*";
+                        }
+                        echo "<br>";
+                    }
+                    break;
+                case '倒正三角形':
+                    for($i=0;$i<$line;$i++){
+                        for($j=0;$j<=$i;$j++){
+                            echo "&nbsp";
+                        }
+                        for($k=($line*2)-1;$k>$i*2;$k--){
+                            echo "*";
+                        }
+                        echo "<br>";
+                    }
+                    break;
+                case '菱形':
+                    for($i=0;$i<$line;$i++){
+                        for($j=($line-1);$j>$i;$j--){
+                            echo "&nbsp";
+                        }
+                        for($k=1;$k<=(2*$i)+1;$k++){
+                            echo "*";
+                        }
+                        echo "<br>";
+                    }
+                    for($i=0;$i<$line;$i++){
+                        for($j=0;$j<=$i;$j++){
+                            echo "&nbsp";
+                        }
+                        for($k=(($line-1)*2)-1;$k>$i*2;$k--){
+                            echo "*";
+                        }
+                        echo "<br>";
+                    }
+                    break;
+                case '矩形':
+                    for($i=0;$i<$line;$i++){
+                        for($j=$line;$j<=$i;$j*1){
+                            echo "*";
+                        }
+                        echo "<br>";
+                    }
+                    break;
+            }
         }
     ?>
 </body>

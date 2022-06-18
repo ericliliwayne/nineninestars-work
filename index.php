@@ -79,6 +79,8 @@
                 <option value="倒正三角形">倒正三角形</option>
                 <option value="菱形">菱形</option>
                 <option value="矩形">矩形</option>
+                <option value="矩形挖空">矩形挖空</option>
+                <option value="矩形+對角線">矩形+對角線</option>
             </select>
         </label>
         <button type="submit">輸出圖形</button>
@@ -149,8 +151,32 @@
                     break;
                 case '矩形':
                     for($i=0;$i<$line;$i++){
-                        for($j=$line;$j<=$i;$j*1){
-                            echo "*";
+                        for($j=0;$j<$line;$j++){
+                            echo "*"."&nbsp";//多加空格看起來比較方正
+                        }
+                        echo "<br>";
+                    }
+                    break;
+                case '矩形挖空':
+                    for($i=0;$i<$line;$i++){
+                        for($j=0;$j<$line;$j++){
+                            if($i==0 || $i==($line-1) ||$j==0 ||$j==($line-1)){
+                                echo "*"."&nbsp";
+                            }else{
+                                echo "&nbsp"."&nbsp";
+                            }
+                        }
+                        echo "<br>";
+                    }
+                    break;
+                case '矩形+對角線':
+                    for($i=0;$i<$line;$i++){
+                        for($j=0;$j<$line;$j++){
+                            if($i==0 || $i==($line-1) ||$j==0 ||$j==($line-1) ||$i==$j ||$j==(($line-1))-$i){
+                                echo "*"."&nbsp";
+                            }else{
+                                echo "&nbsp"."&nbsp";
+                            }
                         }
                         echo "<br>";
                     }

@@ -8,13 +8,53 @@
     <style>
         body{
             font-family: 'Courier New', Courier, monospace;
-            background-color: lightgray;
+            background-color: #eee;
+        }
+        h1{
+            font-family: '標楷體';
+            text-align: center;
         }
         #ninenine{
             background-color: lightblue;
+            font-family: '標楷體';
+            padding: 0 0 5px 5px;
+            border: 10px outset rgb(183, 226, 240);
+            box-shadow: 2px 2px 5px black;
         }
         #print{
-            background-color: lightblue;
+            background-color: lightpink;
+            font-family: '標楷體';
+            padding: 0 0 5px 5px;
+            border: 10px outset pink;
+            box-shadow: 2px 2px 5px black;
+        }
+        .title1{
+            font-size: 30px;
+        }
+        .title2{
+            font-size: 30px;
+        }
+        #num1{
+            font-size: 20px;
+        }
+        #num2{
+            font-size: 20px;
+        }
+        #line{
+            font-size: 20px;
+        }
+        label{
+            font-size: 20px;
+        }
+        #shape{
+            font-size: 20px;
+        }
+        button{
+            font-size: 20px;
+        }
+        button:hover{
+            color: white;
+            background-color: black;
         }
         table{
             font-family: 'Times New Roman', Times, serif;
@@ -24,12 +64,16 @@
             width: 99vw;
             font-size: larger;
             overflow: scroll;
+            box-shadow: 2px 2px 5px black;
         }
         tr td{
             border: 1px solid darkslateblue;
             padding: 2px;
             min-width: 200px;
             overflow:auto;
+        }
+        td:hover{
+            background-color: lightgreen;
         }
         tr:nth-child(odd){
             background-color: lightcyan;
@@ -56,20 +100,29 @@
         }
         .colora{
             color:cadetblue;
+            /* text-shadow: 1px 1px 1px black; */
         }
         .colorb{
             color:darkgoldenrod;
+            text-shadow: 1px 1px 1px black;
+        }
+        .colora:hover{
+            color: black;
+        }
+        .colorb:hover{
+            color: black;
         }
     </style>
 </head>
 <body>
+    <h1>乘法表及畫星星(用post和function方式)</h1>
     <form action="index.php" method="post" id="ninenine">
-        <p>「99」乘法表</p>
+        <p class="title1">「99」乘法表</p>
         <label for="num1">數字1:
-            <input type="number" name="num1" min="1" max="99" id="num1">
+            <input type="number" name="num1" min="1" max="99" id="num1" value="<?=isset($_POST['num1'])?$_POST['num1']:"";?>">
         </label>
         <label for="num2">數字2:
-            <input type="number" name="num2" min="1" max="99" id="num2">
+            <input type="number" name="num2" min="1" max="99" id="num2" value="<?=isset($_POST['num2'])?$_POST['num2']:"";?>">
         </label>
         <button type="submit">輸出乘法表</button>
     </form>
@@ -102,9 +155,9 @@
     $shape = isset($_POST['shape'])?$_POST['shape']:"";
     ?>
     <form action="index.php" method="post" id="print">
-    <p>畫星星</p>
+    <p class="title2">畫星星</p>
         <label for="line">行數:
-            <input type="number" name="line" min="3" max="101" id="line">
+            <input type="number" name="line" min="3" max="101" id="line" value="<?=isset($_POST['line'])?$_POST['line']:"";?>">
         </label>
         <label for="shape">選擇形狀:
             <select name="shape" id="shape">
